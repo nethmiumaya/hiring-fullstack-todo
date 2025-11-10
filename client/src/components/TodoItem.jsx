@@ -21,7 +21,6 @@ export default function TodoItem({ todo, onToggle, onDelete, onUpdate }) {
     }
   }
 
-  // lock body scroll and focus first input when modal opens
   useEffect(() => {
     if (isEditing) {
       const prevOverflow = document.body.style.overflow;
@@ -70,7 +69,6 @@ export default function TodoItem({ todo, onToggle, onDelete, onUpdate }) {
           role="dialog"
           aria-modal="true"
           onMouseDown={(e) => {
-            // close when clicking overlay (not the modal content)
             if (e.target.classList.contains('modal-overlay')) {
               reset();
               setEditing(false);

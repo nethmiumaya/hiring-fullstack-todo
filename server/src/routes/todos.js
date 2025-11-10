@@ -1,4 +1,3 @@
-// javascript
 import { Router } from 'express';
 import { getPool } from '../db.js';
 

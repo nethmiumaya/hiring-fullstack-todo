@@ -73,9 +73,9 @@ export default function App() {
           </div>
         )}
 
-        <div className="footer" style={{ marginTop: 12 }}>
-          Backend: <code>/api/todos</code> • MySQL persistence
-        </div>
+          <div className="footer" style={{ marginTop: 12 }}>
+              My List — Manage your tasks
+          </div>
       </div>
     </div>
   );

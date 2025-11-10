@@ -3,14 +3,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const {
-  DB_HOST = 'localhost',
-  DB_USER = 'root',
-  DB_PASSWORD = 'nethmi123',
-  DB_NAME = 'todo_app',
-  DB_PORT = '3306'
-} = process.env;
-
 let pool;
 
 /**
@@ -21,23 +13,23 @@ let pool;
  */
 export async function initDb() {
   const bootstrapConn = await mysql.createConnection({
-    host: DB_HOST,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    port: DB_PORT
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'INCLUDE_YOUR_USERNAME_HERE',
+    password: process.env.DB_PASSWORD || 'INCLUDE_YOUR_PASSWORD_HERE',
+    port: Number(process.env.DB_PORT) || 3306
   });
 
   await bootstrapConn.query(
-    `CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`
+    `CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME || 'todo_app'}\` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`
   );
   await bootstrapConn.end();
 
   pool = mysql.createPool({
-    host: DB_HOST,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    database: DB_NAME,
-    port: DB_PORT,
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'INCLUDE_YOUR_USERNAME_HERE',
+    password: process.env.DB_PASSWORD || 'INCLUDE_YOUR_PASSWORD_HERE',
+    database: process.env.DB_NAME || 'todo_app',
+    port: Number(process.env.DB_PORT) || 3306,
     waitForConnections: true,
     connectionLimit: 10,
     namedPlaceholders: true
