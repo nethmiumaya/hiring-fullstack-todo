@@ -284,3 +284,53 @@ body {
   border-radius: 10px;
   margin-bottom: 12px;
 }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 20px;
+  animation: fadeUp .12s ease;
+}
+
+.modal {
+  width: 100%;
+  max-width: 560px;
+  background: linear-gradient(180deg, rgba(15,23,42,0.98), rgba(8,12,24,0.98));
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  border: 1px solid rgba(198,219,255,0.06);
+}
+
+.modal h2 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  background: var(--panel);
+  border: 1px solid rgba(198, 219, 255, 0.08);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.modal textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
